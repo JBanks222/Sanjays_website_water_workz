@@ -1,0 +1,95 @@
+import {Link} from '@remix-run/react'
+import type {SiteSettings} from '~/sanity/types'
+
+type FooterProps = {
+  settings: SiteSettings | null
+}
+
+export default function Footer({settings}: FooterProps) {
+  const phone = settings?.phone ?? '516-666-5947'
+  const email = settings?.email ?? 'waterwerkzli@gmail.com'
+  const address = settings?.address ?? '51 Sunrise Hwy, Lynbrook, NY 11563'
+  const businessName = settings?.businessName ?? 'WaterWerkz LI'
+
+  return (
+    <footer className="site-footer" id="contact">
+      <div className="site-footer__grid">
+        <div className="site-footer__brand">
+          <img src="/images/logo-dark.png" alt={businessName} />
+          <p>{settings?.contactIntro}</p>
+          {settings?.instagramUrl ? (
+            <a
+              className="btn btn--primary btn--small"
+              href={settings.instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Follow on Instagram
+            </a>
+          ) : null}
+        </div>
+
+        <div className="site-footer__column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/#services">Services</Link>
+            </li>
+            <li>
+              <Link to="/#mission">About</Link>
+            </li>
+            <li>
+              <Link to="/#contact">Contact</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className="site-footer__column">
+          <h3>Contact Us</h3>
+          <ul className="site-footer__contact">
+            <li>
+              <a href={`tel:${phone.replace(/\D/g, '')}`}>{phone}</a>
+            </li>
+            <li>
+              <a href={`mailto:${email}`}>{email}</a>
+            </li>
+            <li>{address}</li>
+          </ul>
+        </div>
+
+        <div className="site-footer__column">
+          <h3>Hours</h3>
+          <ul className="site-footer__hours">
+            {settings?.hours?.length ? (
+              settings.hours.map((entry) => (
+                <li key={entry.day}>
+                  <span>{entry.day}</span>
+                  <span>
+                    {entry.closed ? 'Closed' : `${entry.open} – ${entry.close}`}
+                  </span>
+                </li>
+              ))
+            ) : (
+              <>
+                <li>
+                  <span>Mon – Sat</span>
+                  <span>9:30 am – 5:00 pm</span>
+                </li>
+                <li>
+                  <span>Sun</span>
+                  <span>Closed</span>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+      </div>
+      <p className="site-footer__copy">
+        © {new Date().getFullYear()} {businessName}. All rights reserved.
+      </p>
+    </footer>
+  )
+}

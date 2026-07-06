@@ -1,0 +1,18 @@
+{
+  "name": "sanity-template-remix-clean",
+  "private": true,
+  "workspaces": [
+    "remix-app",
+    "studio"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=remix-app\" \"npm run dev --workspace=studio\"",
+    "format": "prettier --cache --write ."
+  },
+  "prettier": "@sanity/prettier-config",
+  "devDependencies": {
+    "@sanity/prettier-config": "1.0.3",
+    "concurrently": "9.1.2",
+    "prettier": "3.5.1"
+  }
+}
