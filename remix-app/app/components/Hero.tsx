@@ -1,3 +1,4 @@
+import {HERO_IMAGE} from '~/data/carImages'
 import type {SiteSettings} from '~/sanity/types'
 import {urlFor} from '~/sanity/image'
 
@@ -10,9 +11,10 @@ export default function Hero({settings}: HeroProps) {
     settings?.heroHeadline ??
     'Transform your vehicle with premium auto detailing services and expert vehicle protection solutions.'
   const phone = settings?.phone ?? '516-666-5947'
-  const heroStyle = settings?.heroImage
-    ? {backgroundImage: `url(${urlFor(settings.heroImage).width(1600).height(900).url()})`}
-    : undefined
+  const heroBackground = settings?.heroImage
+    ? urlFor(settings.heroImage).width(1600).height(900).url()
+    : HERO_IMAGE
+  const heroStyle = {backgroundImage: `url(${heroBackground})`}
 
   return (
     <section className="hero" style={heroStyle}>

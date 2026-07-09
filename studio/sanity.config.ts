@@ -18,6 +18,31 @@ const locate: DocumentLocationResolver = (params, context) => {
     }
   }
 
+  if (params.type === 'detailingPage') {
+    return {
+      locations: [{title: 'Detailing Packages', href: '/detailing'}],
+    }
+  }
+
+  if (params.type === 'detailingPackage') {
+    const doc$ = documentStore.listenQuery(`*[_id == $id][0]{title, slug}`, params, {
+      perspective: 'drafts',
+    }) as Observable<{title: string | null; slug: {current: string | null} | null} | null>
+
+    return doc$.pipe(
+      map((doc) => {
+        if (!doc) return null
+        const hash = doc.slug?.current ? `#${doc.slug.current}` : ''
+        return {
+          locations: [
+            {title: doc.title || 'Package', href: `/detailing${hash}`},
+            {title: 'Detailing Packages', href: '/detailing'},
+          ],
+        }
+      }),
+    )
+  }
+
   if (params.type === 'service') {
     const doc$ = documentStore.listenQuery(`*[_id == $id][0]{title}`, params, {
       perspective: 'drafts',

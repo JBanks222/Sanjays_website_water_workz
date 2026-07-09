@@ -30,6 +30,28 @@ export type Service = {
   order?: number
 }
 
+export type DetailingPackage = {
+  _id: string
+  title: string
+  slug: {current: string}
+  trackKey: string
+  priceLabel: string
+  exteriorServices?: string[]
+  interiorServices?: string[]
+  order?: number
+}
+
+export type DetailingPage = {
+  title?: string
+  intro?: string
+}
+
+export type DetailingPageData = {
+  page: DetailingPage | null
+  packages: DetailingPackage[]
+  settings: SiteSettings | null
+}
+
 export type HomepageData = {
   settings: SiteSettings | null
   services: Service[]

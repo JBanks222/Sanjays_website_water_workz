@@ -23,6 +23,24 @@ export const SERVICES_QUERY = groq`*[_type == "service"] | order(order asc){
   order
 }`
 
+export const DETAILING_PAGE_QUERY = groq`{
+  "page": *[_type == "detailingPage"][0]{
+    title,
+    intro
+  },
+  "packages": *[_type == "detailingPackage"] | order(order asc){
+    _id,
+    title,
+    slug,
+    trackKey,
+    priceLabel,
+    exteriorServices,
+    interiorServices,
+    order
+  },
+  "settings": ${SITE_SETTINGS_QUERY}
+}`
+
 export const HOMEPAGE_QUERY = groq`{
   "settings": ${SITE_SETTINGS_QUERY},
   "services": ${SERVICES_QUERY}
