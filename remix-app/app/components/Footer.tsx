@@ -12,7 +12,7 @@ export default function Footer({settings}: FooterProps) {
   const businessName = settings?.businessName ?? 'WaterWerkz LI'
 
   return (
-    <footer className="site-footer" id="contact">
+    <footer className="site-footer">
       <div className="site-footer__grid">
         <div className="site-footer__brand">
           <img src="/images/logo-dark.png" alt={businessName} />

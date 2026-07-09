@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-anchor: none;
 }
 
 body {
@@ -393,6 +394,7 @@ main {
 .services {
   background: var(--black);
   padding-bottom: 64px;
+  scroll-margin-top: var(--header-height);
 }
 
 .services__grid {
@@ -486,6 +488,7 @@ main {
 .mission {
   background: var(--white);
   color: var(--black);
+  scroll-margin-top: var(--header-height);
 }
 
 .mission__inner {
@@ -530,6 +533,7 @@ main {
   position: relative;
   background: var(--gray-900) center / cover no-repeat;
   background-image: linear-gradient(135deg, #0a1628, #0a0a0a);
+  scroll-margin-top: var(--header-height);
 }
 
 .contact-cta__inner {

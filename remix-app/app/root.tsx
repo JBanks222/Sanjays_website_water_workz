@@ -3,6 +3,7 @@ import styles from './styles/index.css'
 import {Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData} from '@remix-run/react'
 import {Suspense, lazy} from 'react'
 import Header from '~/components/Header'
+import ScrollManager from '~/components/ScrollManager'
 
 const LiveVisualEditing = lazy(() => import('~/components/LiveVisualEditing'))
 
@@ -42,6 +43,7 @@ export default function App() {
       </head>
       <body>
         <Header />
+        <ScrollManager />
         <main>
           <Outlet />
         </main>
@@ -51,7 +53,7 @@ export default function App() {
             __html: `window.ENV = ${JSON.stringify(ENV)}`,
           }}
         />
-        {ENV.SANITY_STUDIO_STEGA_ENABLED ? (
+        {ENV.SANITY_STUDIO_STEGA_ENABLED === 'true' ? (
           <Suspense>
             <LiveVisualEditing />
           </Suspense>

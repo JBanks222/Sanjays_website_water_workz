@@ -9,7 +9,7 @@ export default function ContactCTA({settings}: ContactCTAProps) {
   const phone = settings?.phone ?? '516-666-5947'
 
   return (
-    <section className="contact-cta">
+    <section className="contact-cta" id="contact">
       <div className="contact-cta__inner">
         <h2>Get Started Today</h2>
         <p>

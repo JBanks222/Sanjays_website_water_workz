@@ -1,7 +1,6 @@
 import {useLoaderData, type MetaFunction} from '@remix-run/react'
 import {useQuery} from '@sanity/react-loader'
 import {Link} from '@remix-run/react'
-import {useEffect} from 'react'
 import BookNowButton from '~/components/BookNowButton'
 import DetailingPackageCard from '~/components/DetailingPackageCard'
 import Footer from '~/components/Footer'
@@ -41,15 +40,6 @@ export default function DetailingPage() {
   const packages = data?.packages ?? []
   const settings = data?.settings ?? null
   const phone = settings?.phone ?? '516-666-5947'
-
-  useEffect(() => {
-    const hash = window.location.hash.slice(1)
-    if (!hash) return
-
-    const sectionId = packageSectionId(hash)
-    const timer = window.setTimeout(() => scrollToPackageSection(sectionId), 100)
-    return () => window.clearTimeout(timer)
-  }, [packages])
 
   return (
     <div className="detailing-page">
