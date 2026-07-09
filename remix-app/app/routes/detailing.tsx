@@ -2,11 +2,13 @@ import {useLoaderData, type MetaFunction} from '@remix-run/react'
 import {useQuery} from '@sanity/react-loader'
 import {Link} from '@remix-run/react'
 import {useEffect} from 'react'
+import BookNowButton from '~/components/BookNowButton'
 import DetailingPackageCard from '~/components/DetailingPackageCard'
 import Footer from '~/components/Footer'
 import {loadQuery} from '~/sanity/loader.server'
 import {DETAILING_PAGE_QUERY} from '~/sanity/queries'
 import type {DetailingPageData} from '~/sanity/types'
+import {DETAILING_INTRO} from '~/data/servicePages'
 import {packageSectionId, scrollToPackageSection} from '~/utils/detailing'
 
 export const meta: MetaFunction = () => {
@@ -52,9 +54,9 @@ export default function DetailingPage() {
   return (
     <div className="detailing-page">
       <header className="detailing-hero">
-        <p className="detailing-hero__eyebrow">Performance-Inspired Packages</p>
-        <h1>{page?.title ?? 'Auto Detailing Package Options'}</h1>
-        {page?.intro ? <p className="detailing-hero__intro">{page.intro}</p> : null}
+        <p className="detailing-hero__eyebrow">Our Services</p>
+        <h1>Detailing</h1>
+        <p className="detailing-hero__intro">{page?.intro ?? DETAILING_INTRO}</p>
       </header>
 
       {packages.length > 1 ? (
@@ -81,6 +83,7 @@ export default function DetailingPage() {
       ) : null}
 
       <div className="detailing-packages">
+        <h2 className="detailing-packages__heading">Our Packages</h2>
         {packages.map((pkg, i) => (
           <DetailingPackageCard
             key={pkg._id}
@@ -95,7 +98,8 @@ export default function DetailingPage() {
         <h2>Ready to Hit the Track?</h2>
         <p>Call us to book your package or ask which circuit fits your vehicle best.</p>
         <div className="detailing-cta__actions">
-          <a className="btn btn--primary" href={`tel:${phone.replace(/\D/g, '')}`}>
+          <BookNowButton variant="inline" />
+          <a className="btn btn--secondary" href={`tel:${phone.replace(/\D/g, '')}`}>
             Call {phone}
           </a>
           <Link className="btn btn--secondary" to="/#contact">

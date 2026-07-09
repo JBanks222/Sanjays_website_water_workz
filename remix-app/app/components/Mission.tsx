@@ -8,10 +8,17 @@ export default function Mission({settings}: MissionProps) {
   return (
     <section className="mission" id="mission">
       <div className="mission__inner">
-        <h2>{settings?.missionTitle ?? 'Our Mission'}</h2>
+        <h2>{settings?.missionTitle ?? 'About Us'}</h2>
+        <p className="mission__tagline">Protection. Perfection. Passion.</p>
         <p>
-          {settings?.missionStatement ??
-            'Our mission is to provide premium auto detailing services that enhance the beauty and longevity of your vehicle. We believe in using only the best products and techniques in our car detailing to ensure your car looks its absolute best while benefiting from our vehicle protection service.'}
+          Trusted by owners, from meticulous detailing and paint correction to premium tint,
+          vehicle wraps and paint protection film, we treat every vehicle as if it were our own.
+        </p>
+        <p>
+          Our mission is simple: deliver exceptional automotive care through craftsmanship,
+          precision, and genuine passion for cars. Every vehicle that enters our shop receives the
+          same attention to detail we would give our own. We believe protection is an investment,
+          appearance reflects pride, and quality should never be compromised.
         </p>
       </div>
     </section>

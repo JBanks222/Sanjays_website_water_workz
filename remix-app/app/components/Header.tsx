@@ -1,5 +1,6 @@
 import {Link} from '@remix-run/react'
 import {useState} from 'react'
+import BookNowButton from '~/components/BookNowButton'
 
 const NAV_LINKS = [
   {label: 'Home', href: '/'},
@@ -34,6 +35,7 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
+        <BookNowButton variant="header" />
       </nav>
     </header>
   )

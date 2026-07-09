@@ -1,3 +1,4 @@
+import BookNowButton from '~/components/BookNowButton'
 import type {SiteSettings} from '~/sanity/types'
 
 type ContactCTAProps = {
@@ -16,9 +17,12 @@ export default function ContactCTA({settings}: ContactCTAProps) {
           premium auto detailing and vehicle protection services that will keep your car looking
           its best.
         </p>
-        <a className="btn btn--primary" href={`tel:${phone.replace(/\D/g, '')}`}>
-          Call {phone}
-        </a>
+        <div className="contact-cta__actions">
+          <BookNowButton variant="inline" />
+          <a className="btn btn--secondary" href={`tel:${phone.replace(/\D/g, '')}`}>
+            Call {phone}
+          </a>
+        </div>
       </div>
     </section>
   )
