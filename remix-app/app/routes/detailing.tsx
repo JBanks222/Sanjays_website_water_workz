@@ -1,6 +1,6 @@
 import {useLoaderData, type MetaFunction} from '@remix-run/react'
 import {useQuery} from '@sanity/react-loader'
-import {Link} from '@remix-run/react'
+import SectionLink from '~/components/SectionLink'
 import BookNowButton from '~/components/BookNowButton'
 import DetailingPackageCard from '~/components/DetailingPackageCard'
 import Footer from '~/components/Footer'
@@ -92,9 +92,9 @@ export default function DetailingPage() {
           <a className="btn btn--secondary" href={`tel:${phone.replace(/\D/g, '')}`}>
             Call {phone}
           </a>
-          <Link className="btn btn--secondary" to="/#contact">
+          <SectionLink sectionId="contact" className="btn btn--secondary">
             Visit the Shop
-          </Link>
+          </SectionLink>
         </div>
       </section>
 

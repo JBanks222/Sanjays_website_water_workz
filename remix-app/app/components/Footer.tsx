@@ -1,4 +1,5 @@
 import {Link} from '@remix-run/react'
+import SectionLink from '~/components/SectionLink'
 import type {SiteSettings} from '~/sanity/types'
 
 type FooterProps = {
@@ -33,16 +34,18 @@ export default function Footer({settings}: FooterProps) {
           <h3>Quick Links</h3>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/#services">Services</Link>
+              <SectionLink sectionId="services">Services</SectionLink>
             </li>
             <li>
-              <Link to="/#mission">About</Link>
+              <SectionLink sectionId="mission">About</SectionLink>
             </li>
             <li>
-              <Link to="/#contact">Contact</Link>
+              <SectionLink sectionId="contact">Contact</SectionLink>
             </li>
           </ul>
         </div>
