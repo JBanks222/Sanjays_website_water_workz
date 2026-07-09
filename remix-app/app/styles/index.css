@@ -13,7 +13,7 @@
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --max-width: 1200px;
-  --header-height: 114px;
+  --header-height: 159px;
 }
 
 *,
@@ -171,7 +171,7 @@ main {
 }
 
 .site-header__logo img {
-  height: 90px;
+  height: 135px;
   width: auto;
 }
 
@@ -587,7 +587,7 @@ main {
 }
 
 .site-footer__brand img {
-  height: 105px;
+  height: 158px;
   width: auto;
   margin-bottom: 16px;
 }
@@ -1011,7 +1011,7 @@ main {
 }
 
 .brand-visual__logo {
-  height: 150px;
+  height: 225px;
   width: auto;
 }
 
