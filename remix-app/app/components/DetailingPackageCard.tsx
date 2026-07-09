@@ -4,6 +4,7 @@ import type {DetailingPackage} from '~/sanity/types'
 import BrandVisual from '~/components/BrandVisual'
 import TrackMap from '~/components/TrackMap'
 import {getTrackImageForPackage} from '~/data/tracks'
+import {packageSectionId} from '~/utils/detailing'
 
 type DetailingPackageCardProps = {
   pkg: DetailingPackage
@@ -17,7 +18,7 @@ export default function DetailingPackageCard({pkg, index, total}: DetailingPacka
   const isBrand = trackKey === 'brand'
   const hasTrackMap = Boolean(getTrackImageForPackage(pkg))
   const brandVariant = pkg.slug?.current?.includes('jr') ? 'werkz-jr' : 'werkz'
-  const sectionId = pkg.slug?.current ?? `package-${index}`
+  const sectionId = packageSectionId(pkg.slug?.current, `package-${index}`)
 
   const exteriorCount = pkg.exteriorServices?.length ?? 0
   const interiorCount = pkg.interiorServices?.length ?? 0

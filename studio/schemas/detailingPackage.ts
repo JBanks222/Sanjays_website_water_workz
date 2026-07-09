@@ -28,7 +28,7 @@ export default defineType({
           {title: 'Silverstone', value: 'silverstone'},
           {title: 'Laguna Seca', value: 'laguna-seca'},
           {title: 'Monza', value: 'monza'},
-          {title: 'Le Mans', value: 'le-mans'},
+          {title: 'Nürburgring', value: 'nurburgring'},
           {title: 'Circuit de Spa-Francorchamps', value: 'spa'},
           {title: 'Brand Logo (Werkz)', value: 'brand'},
         ],

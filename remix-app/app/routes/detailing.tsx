@@ -1,11 +1,13 @@
 import {useLoaderData, type MetaFunction} from '@remix-run/react'
 import {useQuery} from '@sanity/react-loader'
 import {Link} from '@remix-run/react'
+import {useEffect} from 'react'
 import DetailingPackageCard from '~/components/DetailingPackageCard'
 import Footer from '~/components/Footer'
 import {loadQuery} from '~/sanity/loader.server'
 import {DETAILING_PAGE_QUERY} from '~/sanity/queries'
 import type {DetailingPageData} from '~/sanity/types'
+import {packageSectionId, scrollToPackageSection} from '~/utils/detailing'
 
 export const meta: MetaFunction = () => {
   return [
@@ -38,6 +40,15 @@ export default function DetailingPage() {
   const settings = data?.settings ?? null
   const phone = settings?.phone ?? '516-666-5947'
 
+  useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+
+    const sectionId = packageSectionId(hash)
+    const timer = window.setTimeout(() => scrollToPackageSection(sectionId), 100)
+    return () => window.clearTimeout(timer)
+  }, [packages])
+
   return (
     <div className="detailing-page">
       <header className="detailing-hero">
@@ -49,11 +60,22 @@ export default function DetailingPage() {
       {packages.length > 1 ? (
         <nav className="detailing-jump" aria-label="Package navigation">
           <ul>
-            {packages.map((pkg) => (
-              <li key={pkg._id}>
-                <a href={`#${pkg.slug?.current ?? pkg._id}`}>{pkg.title}</a>
-              </li>
-            ))}
+            {packages.map((pkg) => {
+              const sectionId = packageSectionId(pkg.slug?.current, pkg._id)
+              return (
+                <li key={pkg._id}>
+                  <a
+                    href={`#${sectionId}`}
+                    onClick={(event) => {
+                      event.preventDefault()
+                      scrollToPackageSection(sectionId)
+                    }}
+                  >
+                    {pkg.title}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </nav>
       ) : null}

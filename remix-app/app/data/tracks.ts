@@ -4,7 +4,7 @@ export type TrackKey =
   | 'silverstone'
   | 'laguna-seca'
   | 'monza'
-  | 'le-mans'
+  | 'nurburgring'
   | 'spa'
   | 'brand'
 
@@ -14,7 +14,7 @@ export type TrackImage = {
 }
 
 /** Bump when track map files change to bust browser/CDN cache */
-const TRACK_MAPS_VERSION = '20260709'
+const TRACK_MAPS_VERSION = '20260709c'
 
 function trackSrc(filename: string) {
   return `/images/track_maps/${filename}?v=${TRACK_MAPS_VERSION}`
@@ -34,9 +34,9 @@ export const SLUG_TRACK_IMAGES: Record<string, TrackImage> = {
     label: 'Monza',
     src: trackSrc('Monza.png'),
   },
-  'le-mans': {
-    label: 'Le Mans',
-    src: trackSrc('le_mans.png'),
+  nurburgring: {
+    label: 'Nürburgring',
+    src: trackSrc('nurburgring.png'),
   },
   'circuit-de-spa-francorchamps': {
     label: 'Circuit de Spa-Francorchamps',
@@ -48,7 +48,7 @@ export const TRACK_IMAGES: Record<Exclude<TrackKey, 'brand'>, TrackImage> = {
   silverstone: SLUG_TRACK_IMAGES.silverstone,
   'laguna-seca': SLUG_TRACK_IMAGES['laguna-seca'],
   monza: SLUG_TRACK_IMAGES.monza,
-  'le-mans': SLUG_TRACK_IMAGES['le-mans'],
+  nurburgring: SLUG_TRACK_IMAGES.nurburgring,
   spa: SLUG_TRACK_IMAGES['circuit-de-spa-francorchamps'],
 }
 
