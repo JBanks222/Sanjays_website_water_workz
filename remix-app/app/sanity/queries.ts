@@ -34,6 +34,8 @@ export const DETAILING_PAGE_QUERY = groq`{
     slug,
     trackKey,
     priceLabel,
+    serviceLevel,
+    packageSummary,
     exteriorServices,
     interiorServices,
     order

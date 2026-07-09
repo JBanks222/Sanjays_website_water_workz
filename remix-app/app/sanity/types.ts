@@ -36,6 +36,8 @@ export type DetailingPackage = {
   slug: {current: string}
   trackKey: string
   priceLabel: string
+  serviceLevel?: string
+  packageSummary?: string
   exteriorServices?: string[]
   interiorServices?: string[]
   order?: number

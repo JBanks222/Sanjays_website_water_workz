@@ -44,6 +44,28 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'serviceLevel',
+      title: 'Service Coverage',
+      type: 'string',
+      description: 'What this package includes — shown prominently on the detailing page',
+      options: {
+        list: [
+          {title: 'Exterior Services Only', value: 'exterior-only'},
+          {title: 'Exterior & Interior Services', value: 'exterior-interior'},
+          {title: 'Full Detailing Services', value: 'full-detail'},
+        ],
+        layout: 'radio',
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'packageSummary',
+      title: 'Package Summary',
+      type: 'text',
+      rows: 3,
+      description: 'Short description of who this package is best for (1–2 sentences)',
+    }),
+    defineField({
       name: 'exteriorServices',
       title: 'Exterior Services',
       type: 'array',

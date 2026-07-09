@@ -844,10 +844,101 @@ main {
 }
 
 .detailing-card__price {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--white);
+}
+
+.detailing-card__coverage {
+  margin: 0 0 20px;
+  padding: 20px 16px;
+  text-align: left;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.detailing-card__coverage--exterior-only {
+  border-color: rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.05);
+}
+
+.detailing-card__coverage--exterior-interior {
+  border-color: rgba(0, 123, 255, 0.3);
+  background: rgba(0, 123, 255, 0.06);
+}
+
+.detailing-card__coverage--full-detail {
+  border-color: rgba(241, 196, 15, 0.35);
+  background: rgba(241, 196, 15, 0.06);
+}
+
+.detailing-card__coverage-badge {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  color: var(--black);
+  background: var(--cyan);
+}
+
+.detailing-card__coverage--exterior-interior .detailing-card__coverage-badge {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.detailing-card__coverage--full-detail .detailing-card__coverage-badge {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.detailing-card__coverage-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.detailing-card__coverage-tag {
+  padding: 4px 10px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  color: var(--gray-600);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.detailing-card__coverage-tag--active {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.detailing-card__coverage-tag--premium {
+  border-color: rgba(241, 196, 15, 0.45);
+  color: var(--yellow);
+}
+
+.detailing-card__summary {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--gray-200);
+}
+
+.detailing-card__empty {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  text-align: center;
 }
 
 .detailing-card__toggle {
