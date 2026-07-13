@@ -42,6 +42,12 @@ export default function Footer({settings}: FooterProps) {
               <SectionLink sectionId="services">Services</SectionLink>
             </li>
             <li>
+              <Link to="/detailing">Detailing</Link>
+            </li>
+            <li>
+              <Link to="/gallery">Gallery</Link>
+            </li>
+            <li>
               <SectionLink sectionId="mission">About</SectionLink>
             </li>
             <li>

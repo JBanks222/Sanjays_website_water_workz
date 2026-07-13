@@ -67,3 +67,23 @@ export type Post = {
   mainImage?: Image
   body?: unknown
 }
+
+export type GalleryPage = {
+  title?: string
+  intro?: string
+}
+
+export type GalleryImage = {
+  _id: string
+  title: string
+  image?: Image
+  caption?: string
+  category?: string
+  order?: number
+}
+
+export type GalleryPageData = {
+  page: GalleryPage | null
+  images: GalleryImage[]
+  settings: SiteSettings | null
+}

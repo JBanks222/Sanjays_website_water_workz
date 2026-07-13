@@ -1,6 +1,6 @@
-import {Link} from '@remix-run/react'
 import ContactQuote from '~/components/ContactQuote'
 import Footer from '~/components/Footer'
+import SectionLink from '~/components/SectionLink'
 import {getServiceImageForSlug} from '~/data/carImages'
 import type {ServicePageContent} from '~/data/servicePages'
 import type {SiteSettings} from '~/sanity/types'
@@ -22,7 +22,7 @@ export default function ServicePageLayout({content, settings, children}: Service
       >
         <div className="service-page__hero-overlay" />
         <div className="service-page__hero-content">
-          <p className="service-page__eyebrow">Our Services</p>
+          <p className="service-page__eyebrow">{content.heroEyebrow ?? 'Our Services'}</p>
           <h1>{content.title}</h1>
         </div>
       </header>
@@ -53,10 +53,14 @@ export default function ServicePageLayout({content, settings, children}: Service
 
         {children}
 
-        <ContactQuote settings={settings} />
+        <ContactQuote
+          settings={settings}
+          showBookNow={!content.contactOnly}
+          note={content.contactNote}
+        />
 
         <p className="service-page__back">
-          <Link to="/#services">← Back to all services</Link>
+          <SectionLink sectionId="services">← Back to all services</SectionLink>
         </p>
       </div>
 

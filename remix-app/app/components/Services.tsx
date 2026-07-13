@@ -3,7 +3,9 @@ import type {EncodeDataAttributeCallback} from '@sanity/react-loader'
 import {getServiceImageForSlug} from '~/data/carImages'
 import type {Service} from '~/sanity/types'
 import {urlFor} from '~/sanity/image'
-import {isFeaturedService, serviceDisplayTitle, serviceHref} from '~/utils/services'
+import {FEATURED_SERVICE_SLUGS, serviceDisplayTitle, serviceHref} from '~/utils/services'
+import {clearQueuedSectionScroll} from '~/utils/scroll'
+import {stegaClean} from '@sanity/client/stega'
 
 type ServicesProps = {
   services: Service[]
@@ -11,7 +13,9 @@ type ServicesProps = {
 }
 
 export default function Services({services, encodeDataAttribute}: ServicesProps) {
-  const featuredServices = services.filter((service) => isFeaturedService(service.slug?.current))
+  const featuredServices = FEATURED_SERVICE_SLUGS.map((slug) =>
+    services.find((service) => stegaClean(service.slug?.current) === slug),
+  ).filter((service): service is Service => Boolean(service))
 
   return (
     <section className="services" id="services">
@@ -52,6 +56,7 @@ export default function Services({services, encodeDataAttribute}: ServicesProps)
               to={href}
               className="service-card service-card--link"
               data-sanity={encodeDataAttribute?.([i])}
+              onClick={() => clearQueuedSectionScroll()}
             >
               {inner}
             </Link>

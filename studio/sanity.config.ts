@@ -24,6 +24,18 @@ const locate: DocumentLocationResolver = (params, context) => {
     }
   }
 
+  if (params.type === 'galleryPage') {
+    return {
+      locations: [{title: 'Gallery', href: '/gallery'}],
+    }
+  }
+
+  if (params.type === 'galleryImage') {
+    return {
+      locations: [{title: 'Gallery', href: '/gallery'}],
+    }
+  }
+
   if (params.type === 'detailingPackage') {
     const doc$ = documentStore.listenQuery(`*[_id == $id][0]{title, slug}`, params, {
       perspective: 'drafts',

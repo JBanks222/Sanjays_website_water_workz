@@ -1,6 +1,6 @@
 import type {ReactNode} from 'react'
 import {useNavigate, useLocation} from '@remix-run/react'
-import {queueSectionScroll, scrollToSection} from '~/utils/scroll'
+import {scrollToSection} from '~/utils/scroll'
 
 type SectionLinkProps = {
   sectionId: string
@@ -9,7 +9,7 @@ type SectionLinkProps = {
   onNavigate?: () => void
 }
 
-/** Scrolls to a homepage section without leaving a hash in the URL. */
+/** Scrolls to a homepage section without hash URLs or persisted scroll queues. */
 export default function SectionLink({
   sectionId,
   children,
@@ -32,8 +32,7 @@ export default function SectionLink({
           return
         }
 
-        queueSectionScroll(sectionId)
-        navigate('/')
+        navigate('/', {state: {scrollTo: sectionId}})
       }}
     >
       {children}

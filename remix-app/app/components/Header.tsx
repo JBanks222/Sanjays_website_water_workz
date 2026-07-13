@@ -6,6 +6,7 @@ import SectionLink from '~/components/SectionLink'
 const PAGE_LINKS = [
   {label: 'Home', href: '/'},
   {label: 'Detailing', href: '/detailing'},
+  {label: 'Gallery', href: '/gallery'},
 ] as const
 
 const SECTION_LINKS = [

@@ -1,17 +1,26 @@
+export function scrollToTop() {
+  window.scrollTo({top: 0, left: 0, behavior: 'auto'})
+}
+
 export function scrollToSection(sectionId: string) {
   document.getElementById(sectionId)?.scrollIntoView({behavior: 'smooth', block: 'start'})
 }
 
+/** @deprecated Legacy queue — cleared on every navigation */
 export const SCROLL_TO_SECTION_KEY = 'scrollToSection'
 
-export function queueSectionScroll(sectionId: string) {
-  sessionStorage.setItem(SCROLL_TO_SECTION_KEY, sectionId)
+export function clearQueuedSectionScroll() {
+  sessionStorage.removeItem(SCROLL_TO_SECTION_KEY)
 }
 
-export function takeQueuedSectionScroll(): string | null {
-  const sectionId = sessionStorage.getItem(SCROLL_TO_SECTION_KEY)
-  if (sectionId) {
-    sessionStorage.removeItem(SCROLL_TO_SECTION_KEY)
-  }
-  return sectionId
+export type HomeScrollState = {
+  scrollTo?: string
+}
+
+export function isHomeScrollState(state: unknown): state is HomeScrollState {
+  return (
+    typeof state === 'object' &&
+    state !== null &&
+    ('scrollTo' in state ? typeof (state as HomeScrollState).scrollTo === 'string' : true)
+  )
 }

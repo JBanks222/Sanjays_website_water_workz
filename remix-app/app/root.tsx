@@ -1,6 +1,6 @@
 import {type LinksFunction, json} from '@remix-run/node'
 import styles from './styles/index.css'
-import {Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData} from '@remix-run/react'
+import {Links, LiveReload, Meta, Outlet, Scripts, useLoaderData} from '@remix-run/react'
 import {Suspense, lazy} from 'react'
 import Header from '~/components/Header'
 import ScrollManager from '~/components/ScrollManager'
@@ -38,6 +38,11 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){history.scrollRestoration='manual';if(location.pathname==='/'&&location.hash){history.replaceState(null,'',location.pathname+location.search);scrollTo(0,0)}else if(!location.hash){scrollTo(0,0)}})();`,
+          }}
+        />
         <Meta />
         <Links />
       </head>
@@ -47,7 +52,6 @@ export default function App() {
         <main>
           <Outlet />
         </main>
-        <ScrollRestoration />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.ENV = ${JSON.stringify(ENV)}`,

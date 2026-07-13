@@ -1,40 +1,54 @@
-import {useEffect} from 'react'
+import {useLayoutEffect} from 'react'
 import {useLocation} from '@remix-run/react'
-import {scrollToSection, takeQueuedSectionScroll} from '~/utils/scroll'
+import {
+  clearQueuedSectionScroll,
+  isHomeScrollState,
+  scrollToSection,
+  scrollToTop,
+} from '~/utils/scroll'
 
-/** Keeps fresh page loads at the hero; in-app section links scroll via sessionStorage. */
+/** Controls scroll on navigation — prevents jumps to footer/contact on load. */
 export default function ScrollManager() {
   const location = useLocation()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual'
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    clearQueuedSectionScroll()
+
     if (location.pathname === '/detailing') {
       if (location.hash) {
         const sectionId = decodeURIComponent(location.hash.slice(1))
-        const timer = window.setTimeout(() => scrollToSection(sectionId), 100)
-        return () => window.clearTimeout(timer)
+        requestAnimationFrame(() => scrollToSection(sectionId))
+        return
       }
 
-      window.scrollTo({top: 0, left: 0, behavior: 'auto'})
+      scrollToTop()
       return
     }
 
-    if (location.pathname !== '/') {
-      window.scrollTo({top: 0, left: 0, behavior: 'auto'})
+    if (location.pathname === '/') {
+      const scrollTarget = isHomeScrollState(location.state) ? location.state.scrollTo : undefined
+
+      if (scrollTarget) {
+        requestAnimationFrame(() => scrollToSection(scrollTarget))
+        return
+      }
+
+      if (location.hash) {
+        window.history.replaceState(location.state, '', location.pathname + location.search)
+      }
+
+      scrollToTop()
       return
     }
 
-    const queuedSection = takeQueuedSectionScroll()
-    if (queuedSection) {
-      const timer = window.setTimeout(() => scrollToSection(queuedSection), 150)
-      return () => window.clearTimeout(timer)
-    }
-
-    if (location.hash) {
-      window.history.replaceState(null, '', location.pathname + location.search)
-    }
-
-    window.scrollTo({top: 0, left: 0, behavior: 'auto'})
-  }, [location.pathname, location.key])
+    scrollToTop()
+  }, [location.pathname, location.hash, location.key, location.state])
 
   return null
 }

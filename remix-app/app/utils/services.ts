@@ -5,6 +5,7 @@ export const FEATURED_SERVICE_SLUGS = [
   'paint-protection-film',
   'ceramic-coating',
   'window-tint',
+  'vinyl-wrap',
 ] as const
 
 const SERVICE_DISPLAY_TITLES: Record<string, string> = {
@@ -32,6 +33,8 @@ export function serviceHref(slug?: string | null): string | undefined {
       return '/services/ceramic-coating'
     case 'window-tint':
       return '/services/window-tint'
+    case 'vinyl-wrap':
+      return '/services/vinyl-wrap'
     default:
       return undefined
   }

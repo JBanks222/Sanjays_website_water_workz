@@ -16,6 +16,7 @@ export const SERVICE_IMAGES: Record<string, string> = {
   'ceramic-coating': carSrc('ceramic_coating.jpeg'),
   'window-tint': carSrc('window_tinting.jpeg'),
   'additional-services': carSrc('additional_services.jpeg'),
+  'vinyl-wrap': carSrc('additional_services.jpeg'),
 }
 
 export function getServiceImageForSlug(slug?: string | null): string | null {

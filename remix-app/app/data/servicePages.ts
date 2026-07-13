@@ -10,8 +10,12 @@ export type ServicePageContent = {
   title: string
   metaDescription: string
   imageSlug: string
+  heroEyebrow?: string
   intro: string[]
   sections: ServicePageSection[]
+  /** Hide Book Online — customer contacts by phone/email only */
+  contactOnly?: boolean
+  contactNote?: string
 }
 
 export const DETAILING_INTRO =
@@ -24,6 +28,9 @@ const SERVICE_PAGES: Record<string, ServicePageContent> = {
     metaDescription:
       'Professional paint protection film (PPF) in Lynbrook, NY. Protect your vehicle from rock chips, scratches, and road debris with virtually invisible coverage.',
     imageSlug: 'paint-protection-film',
+    contactOnly: true,
+    contactNote:
+      'PPF is scheduled directly with our team. Please call or email us below — we’ll discuss coverage options and provide a personalized quote.',
     intro: [
       'Paint Protection Film (PPF) acts as a durable, nearly invisible barrier that helps protect your vehicle from rock chips, scratches, and environmental damage. From partial front-end coverage to full vehicle protection, we offer solutions designed to keep your vehicle looking its best for years to come.',
     ],
@@ -93,6 +100,21 @@ const SERVICE_PAGES: Record<string, ServicePageContent> = {
         ],
       },
     ],
+  },
+  'vinyl-wrap': {
+    slug: 'vinyl-wrap',
+    title: 'Vinyl Vehicle Wraps',
+    heroEyebrow: 'Transform the look of your vehicle',
+    metaDescription:
+      'Professional vinyl vehicle wraps on Long Island. Custom satin, matte, gloss, and textured finishes with premium materials and seamless installation.',
+    imageSlug: 'vinyl-wrap',
+    contactOnly: true,
+    contactNote:
+      'Wrap projects are quoted individually. Please call or email us below to discuss your vision and receive a personalized quote.',
+    intro: [
+      'Elevate your vehicle with a professionally installed vinyl wrap that delivers a stunning, custom appearance while helping preserve your factory paint. From sophisticated satin and matte finishes to vibrant gloss and exotic textures, we use premium materials to achieve a flawless, seamless finish.',
+    ],
+    sections: [],
   },
 }
 
