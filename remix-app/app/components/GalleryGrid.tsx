@@ -11,6 +11,14 @@ const CATEGORY_LABELS: Record<string, string> = {
   other: 'Other',
 }
 
+function galleryImageAlt(item: GalleryImage): string {
+  const parts = [item.title]
+  if (item.caption) parts.push(item.caption)
+  const categoryLabel = item.category ? CATEGORY_LABELS[item.category] : null
+  if (categoryLabel) parts.push(categoryLabel)
+  return parts.join(' — ')
+}
+
 type GalleryGridProps = {
   images: GalleryImage[]
 }
@@ -34,17 +42,22 @@ export default function GalleryGrid({images}: GalleryGridProps) {
         if (!src) return null
 
         const categoryLabel = item.category ? CATEGORY_LABELS[item.category] : null
+        const showOverlay = Boolean(categoryLabel || item.caption)
 
         return (
           <figure key={item._id} className="gallery-grid__item">
             <div className="gallery-grid__media">
-              <img src={src} alt={item.title} loading="lazy" decoding="async" />
-              <div className="gallery-grid__overlay">
-                <h3>{item.title}</h3>
-                {categoryLabel ? <span className="gallery-grid__category">{categoryLabel}</span> : null}
-                {item.caption ? <p>{item.caption}</p> : null}
-              </div>
+              <img src={src} alt={galleryImageAlt(item)} loading="lazy" decoding="async" />
+              {showOverlay ? (
+                <div className="gallery-grid__overlay">
+                  {categoryLabel ? (
+                    <span className="gallery-grid__category">{categoryLabel}</span>
+                  ) : null}
+                  {item.caption ? <p>{item.caption}</p> : null}
+                </div>
+              ) : null}
             </div>
+            <figcaption className="sr-only">{galleryImageAlt(item)}</figcaption>
           </figure>
         )
       })}
