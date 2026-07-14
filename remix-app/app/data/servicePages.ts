@@ -5,6 +5,18 @@ export type ServicePageSection = {
   body?: string[]
 }
 
+export type ServicePriceVariant = {
+  label: string
+  price: string
+}
+
+export type ServicePricingItem = {
+  name: string
+  price?: string
+  variants?: ServicePriceVariant[]
+  note?: string
+}
+
 export type ServicePageContent = {
   slug: string
   title: string
@@ -13,6 +25,8 @@ export type ServicePageContent = {
   heroEyebrow?: string
   intro: string[]
   sections: ServicePageSection[]
+  pricingHeading?: string
+  pricing?: ServicePricingItem[]
   /** Hide Book Online — customer contacts by phone/email only */
   contactOnly?: boolean
   contactNote?: string
@@ -98,6 +112,42 @@ const SERVICE_PAGES: Record<string, ServicePageContent> = {
           'Enhances privacy and security',
           'Gives your vehicle a clean, refined appearance',
         ],
+      },
+    ],
+    pricingHeading: 'Tint Packages & Pricing',
+    pricing: [
+      {
+        name: 'Standard Tints — 2 Front Windows',
+        price: '$120',
+      },
+      {
+        name: 'Ceramic Tints — 2 Front Windows',
+        price: '$200',
+        note: 'Ceramic tints improve style, reduce glare, block UV rays, and keep your vehicle cooler compared to standard tints, especially when you opt for our window tint packages.',
+      },
+      {
+        name: 'Standard Tint — Full Car (No Windshield)',
+        price: '$300',
+      },
+      {
+        name: 'Standard Tints — Full Car w/ Windshield',
+        variants: [
+          {label: 'Sedan', price: '$400'},
+          {label: 'SUV / Truck', price: '$500'},
+        ],
+      },
+      {
+        name: 'Ceramic Tints — Full Car (No Windshield)',
+        price: '$500',
+        note: 'Our window tint packages include ceramic tints that block up to 99% of UV rays, reject heat, and protect your interior, all while offering clear visibility without any signal interference—far superior to standard tints.',
+      },
+      {
+        name: 'Ceramic Tints — Full Car w/ Windshield',
+        variants: [
+          {label: 'Sedan', price: '$600'},
+          {label: 'SUV / Truck', price: '$700'},
+        ],
+        note: 'Our window tint packages include ceramic tints that block up to 99% of UV rays, reject heat, and protect your interior, all while offering clear visibility without any signal interference—far superior to standard tints.',
       },
     ],
   },

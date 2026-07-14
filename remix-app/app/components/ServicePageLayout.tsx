@@ -51,6 +51,31 @@ export default function ServicePageLayout({content, settings, children}: Service
           </section>
         ))}
 
+        {content.pricing?.length ? (
+          <section className="service-page__pricing" aria-label="Pricing">
+            <h2>{content.pricingHeading ?? 'Pricing'}</h2>
+            <div className="service-page__pricing-grid">
+              {content.pricing.map((item) => (
+                <article key={item.name} className="service-page__price-card">
+                  <h3>{item.name}</h3>
+                  {item.price ? <p className="service-page__price">{item.price}</p> : null}
+                  {item.variants?.length ? (
+                    <ul className="service-page__price-variants">
+                      {item.variants.map((variant) => (
+                        <li key={variant.label}>
+                          <span>{variant.label}</span>
+                          <span>{variant.price}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {item.note ? <p className="service-page__price-note">{item.note}</p> : null}
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         {children}
 
         <ContactQuote
