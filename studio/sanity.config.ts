@@ -107,7 +107,7 @@ const locate: DocumentLocationResolver = (params, context) => {
 
 export default defineConfig({
   name: 'water-werkz-li',
-  title: 'Water Werkz LI',
+  title: 'Water Werks Lab',
   projectId,
   dataset,
   plugins: [

@@ -29,7 +29,7 @@ export default function Header() {
           window.scrollTo({top: 0, behavior: 'smooth'})
         }}
       >
-        <img src="/images/logo-dark.png" alt="Water Werkz LI" />
+        <img src="/images/logo-dark.png" alt="Water Werks Lab" />
       </Link>
       <button
         className="site-header__menu-btn"

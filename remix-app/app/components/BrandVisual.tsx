@@ -4,10 +4,10 @@ type BrandVisualProps = {
 }
 
 export default function BrandVisual({variant = 'werkz', className}: BrandVisualProps) {
-  const label = variant === 'werkz-jr' ? 'JR' : 'LI'
+  const label = variant === 'werkz-jr' ? 'JR' : 'Lab'
 
   return (
-    <div className={`brand-visual ${className ?? ''}`} role="img" aria-label="Water Werkz brand mark">
+    <div className={`brand-visual ${className ?? ''}`} role="img" aria-label="Water Werks Lab brand mark">
       <img className="brand-visual__logo" src="/images/logo-dark.png" alt="" />
       <span className="brand-visual__badge" aria-hidden>
         {label}

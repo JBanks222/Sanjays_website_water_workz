@@ -12,7 +12,7 @@ import {packageSectionId, scrollToPackageSection} from '~/utils/detailing'
 
 export const meta: MetaFunction = () => {
   return [
-    {title: 'Detailing Packages | Water Werkz LI'},
+    {title: 'Detailing Packages | Water Werks Lab'},
     {
       name: 'description',
       content:

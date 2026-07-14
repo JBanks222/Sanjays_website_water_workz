@@ -11,7 +11,7 @@ import type {HomepageData} from '~/sanity/types'
 
 export const meta: MetaFunction = () => {
   return [
-    {title: 'Water Werkz LI | Premium Auto Detailing & Vehicle Protection'},
+    {title: 'Water Werks Lab | Premium Auto Detailing & Vehicle Protection'},
     {
       name: 'description',
       content:

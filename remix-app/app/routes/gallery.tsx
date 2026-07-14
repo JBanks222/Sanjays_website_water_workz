@@ -7,15 +7,15 @@ import {GALLERY_PAGE_QUERY} from '~/sanity/queries'
 import type {GalleryPageData} from '~/sanity/types'
 
 const DEFAULT_INTRO =
-  'Browse completed detailing, protection, and wrap projects from Water Werkz LI.'
+  'Browse completed detailing, protection, and wrap projects from Water Werks Lab.'
 
 export const meta: MetaFunction = () => {
   return [
-    {title: 'Gallery | Water Werkz LI'},
+    {title: 'Gallery | Water Werks Lab'},
     {
       name: 'description',
       content:
-        'See completed auto detailing, paint protection, ceramic coating, tint, and wrap work from Water Werkz LI in Lynbrook, NY.',
+        'See completed auto detailing, paint protection, ceramic coating, tint, and wrap work from Water Werks Lab in Lynbrook, NY.',
     },
   ]
 }

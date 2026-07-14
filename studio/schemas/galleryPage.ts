@@ -17,7 +17,7 @@ export default defineType({
       type: 'text',
       rows: 3,
       initialValue:
-        'Browse completed detailing, protection, and wrap projects from Water Werkz LI.',
+        'Browse completed detailing, protection, and wrap projects from Water Werks Lab.',
     }),
   ],
   preview: {

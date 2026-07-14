@@ -10,7 +10,7 @@ export default function Footer({settings}: FooterProps) {
   const phone = settings?.phone ?? '516-666-5947'
   const email = settings?.email ?? 'waterwerkzli@gmail.com'
   const address = settings?.address ?? '51 Sunrise Hwy, Lynbrook, NY 11563'
-  const businessName = settings?.businessName ?? 'WaterWerkz LI'
+  const businessName = settings?.businessName ?? 'Water Werks Lab'
 
   return (
     <footer className="site-footer">
@@ -96,9 +96,7 @@ export default function Footer({settings}: FooterProps) {
           </ul>
         </div>
       </div>
-      <p className="site-footer__copy">
-        © {new Date().getFullYear()} {businessName}. All rights reserved.
-      </p>
+      <p className="site-footer__copy">© 2026 WaterWerks Lab. All Rights Reserved.</p>
     </footer>
   )
 }

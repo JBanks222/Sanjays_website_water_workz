@@ -9,11 +9,11 @@ import type {SiteSettings} from '~/sanity/types'
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   if (!data?.content) {
-    return [{title: 'Service | Water Werkz LI'}]
+    return [{title: 'Service | Water Werks Lab'}]
   }
 
   return [
-    {title: `${data.content.title} | Water Werkz LI`},
+    {title: `${data.content.title} | Water Werks Lab`},
     {name: 'description', content: data.content.metaDescription},
   ]
 }
