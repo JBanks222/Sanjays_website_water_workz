@@ -41,21 +41,10 @@ export default function GalleryGrid({images}: GalleryGridProps) {
 
         if (!src) return null
 
-        const categoryLabel = item.category ? CATEGORY_LABELS[item.category] : null
-        const showOverlay = Boolean(categoryLabel || item.caption)
-
         return (
           <figure key={item._id} className="gallery-grid__item">
             <div className="gallery-grid__media">
               <img src={src} alt={galleryImageAlt(item)} loading="lazy" decoding="async" />
-              {showOverlay ? (
-                <div className="gallery-grid__overlay">
-                  {categoryLabel ? (
-                    <span className="gallery-grid__category">{categoryLabel}</span>
-                  ) : null}
-                  {item.caption ? <p>{item.caption}</p> : null}
-                </div>
-              ) : null}
             </div>
             <figcaption className="sr-only">{galleryImageAlt(item)}</figcaption>
           </figure>
