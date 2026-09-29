@@ -1,7 +1,6 @@
 import {useLoaderData, type MetaFunction} from '@remix-run/react'
 import {useQuery} from '@sanity/react-loader'
 import ContactCTA from '~/components/ContactCTA'
-import DealPopup from '~/components/DealPopup'
 import Footer from '~/components/Footer'
 import Hero from '~/components/Hero'
 import Mission from '~/components/Mission'
@@ -47,7 +46,6 @@ export default function Index() {
 
   return (
     <>
-      <DealPopup />
       <Hero settings={settings} />
       <Services
         services={services}
